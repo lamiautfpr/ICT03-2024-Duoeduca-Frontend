@@ -1,5 +1,12 @@
+import { NextUIProvider } from "@nextui-org/react";
 import type { Metadata } from "next";
+import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
+
+const fontSans = FontSans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
 
 export const metadata: Metadata = {
   title: "Duoeduca",
@@ -13,7 +20,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={`antialiased`}>{children}</body>
+      <body className={`antialiased ${fontSans.variable}`}>
+        <NextUIProvider>{children}</NextUIProvider>
+      </body>
     </html>
   );
 }
