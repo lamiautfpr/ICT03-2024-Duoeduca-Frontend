@@ -1,7 +1,19 @@
+"use client";
+import { getCookie } from "cookies-next";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import React from "react";
 import { FormLoginComponent } from "../../components/login/form";
 
 export function LoginScreen() {
+  const router = useRouter();
+  const token = getCookie("accessToken") as string;
+
+  React.useEffect(() => {
+    if (token) {
+      router.replace("/main");
+    }
+  }, [token]);
   return (
     <div>
       <div className="flex h-screen flex-row items-center justify-center">

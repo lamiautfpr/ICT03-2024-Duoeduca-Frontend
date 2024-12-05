@@ -23,8 +23,7 @@ class HTTPAdapter {
         const token = getCookie('accessToken') as string
 
         if (!token) {
-          window.location.replace('/login')
-          return Promise.reject(new Error('Usuário não autenticado'))
+          window.location.replace('/invalid-token')
         }
 
         if (token && config.headers) {

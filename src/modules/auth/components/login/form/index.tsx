@@ -26,8 +26,8 @@ export function FormLoginComponent() {
   } = useForm({
     resolver: zodResolver(loginSchema),
     defaultValues: {
-      email: "frontend@ebattle.com",
-      password: "frontend123",
+      email: "",
+      password: "",
     },
   });
   const toggleVisibility = () => setIsVisible(!isVisible);
@@ -36,7 +36,7 @@ export function FormLoginComponent() {
     try {
       const result = await login.mutateAsync(data);
       setCookie("accessToken", result.data.token);
-      router.replace("/");
+      router.replace("/main");
     } catch (error) {
       toast.custom((t) => (
         <div
